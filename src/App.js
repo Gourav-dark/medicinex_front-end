@@ -7,21 +7,32 @@ import Header from './Layouts/Header';
 import Home from './Pages/Home';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
+import { AuthProvider } from './Components/AuthProvider';
+import Profile from './Pages/Profile';
+import Orders from './Pages/Orders';
+import Shopping from './Pages/Shopping';
+import BuyItem from './Components/BuyItem';
 
 const App = () => {
   return (
     <div className='App'>
       <Router>
-        <Routes>
-        <Route path="/" element={<Header />}>
-                <Route index element={ <Home/>}/>
-                {/* <Route path='service' element={<Service/>}/>
-                <Route path='about' element={<About/>}/>
-                <Route path='contact' element={<Contact/>}/> */}
-                <Route path='signup' element={<Register/>}/>
-                <Route path='login' element={<Login/>}/>
-          </Route>
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Header />}>
+                  <Route index element={ <Home/>}/>
+                  {/* <Route path='service' element={<Service/>}/>
+                  <Route path='about' element={<About/>}/>
+                  <Route path='contact' element={<Contact/>}/> */}
+                  <Route path='signup' element={<Register/>}/>
+                  <Route path='login' element={<Login/>}/>
+                  <Route path='profile' element={<Profile/>}/>
+                  <Route path='orders' element={<Orders/>}/>
+                  <Route path='shopping' element={<Shopping/>}/>
+                  <Route path='shopping/buyitem/:Mid' element={<BuyItem/>}/>
+            </Route>
+          </Routes>
+        </AuthProvider>
       </Router>
     </div>
   )

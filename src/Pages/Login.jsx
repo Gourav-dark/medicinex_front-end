@@ -1,16 +1,55 @@
+import { useContext, useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
+import { AuthContext } from "../Components/AuthProvider";
+
 const Login = () => {
+  const {login,isAuthenticated}=useContext(AuthContext);
+  const Navigate = useNavigate();
+  const [show, setshow] = useState(false);
+  const [Login, setLogin] = useState({
+    "password": "12345",
+    "email": "rohan@gmail.com",
+  });
+  useEffect(() => {
+    if (isAuthenticated) {
+      Navigate("/profile");
+    }
+  }, []);
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setLogin((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+  const handleSave=async()=> {
+    // console.log(Login);
+    try {
+      const res = await Axios.post("https://localhost:7258/api/Users/LoginUser", Login);
+      setshow(true);
+      setTimeout(() => Navigate("/login"), 1000);
+      // console.log(res.data);
+      login(res.data);
+      // console.log(isAuthenticated);
+      Navigate("/profile");
+    } catch (err) { 
+      console.log(err);
+    }
+  }
   return (
     <div className="d-flex justify-content-center align-items-center">
         <div className="m-5 bg-white p-3 rounded w-50">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+            <div className="mb-3">
+                <label className="form-label">Email address</label>
+                <input type="email" className="form-control" value={Login.email} onChange={handleInput} />
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1"/>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input type="password" className="form-control" value={Login.password} onChange={handleInput}/>
+        </div>
+        <div className="d-flex justify-content-center">
+            <button type="submit" className="btn btn-outline-success btn-lg py-1" onClick={handleSave}>Login</button>
+        </div>
         </div>
     </div>
   )
