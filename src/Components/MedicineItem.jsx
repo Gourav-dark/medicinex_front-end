@@ -13,7 +13,7 @@ const MedicineItem = ({ item }) => {
                   className="btn btn-primary"
                   onClick={()=>Navigate(`buyitem/${item.id}`)}
             >
-            Buy
+            Select
             </button>
         </div>
     </div>
