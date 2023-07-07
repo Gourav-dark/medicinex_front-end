@@ -35,3 +35,11 @@ body{
     width: 40%;
   }
 }
+.homeclass{
+  height: 91vh;
+  width: 100%;
+  background-image: url("./Assert/Images/bgimage.png");
+  background-size: cover;
+  background-position: center;
+
+}

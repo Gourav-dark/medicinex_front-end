@@ -10,7 +10,7 @@ const BuyItem = () => {
   const { user, isAuthenticated } = useContext(AuthContext);
   const { Mid } = useParams();
   const [Medicine, setMedicine] = useState({});
-  const [Quantity, setQuantity] = useState(0);
+  const [Quantity, setQuantity] = useState(1);
   const [Price, setPrice] = useState(0);
   const date = new Date(Medicine.expDate).toLocaleDateString();
 
@@ -39,7 +39,7 @@ const BuyItem = () => {
   }
 
   const decrease = () => {
-    if (Quantity > 0) {
+    if (Quantity > 1) {
       setQuantity(Quantity - 1);
     }
   }
@@ -60,14 +60,14 @@ const BuyItem = () => {
       console.log(res);
       setMessage(res.data);
       setshow(true);
-      setTimeout(()=>Navigate("/login"),1500);
+      setTimeout(()=>Navigate("/orders"),1000);
     } catch (error) {
       console.log(error);
     }
   }
   return (
-    <div className="Cart m-4 d-flex justify-content-center align-items-center">
-      <div className="bg-white rounded-3 d-flex flex-wrap m-5 gap-5 border border-success border-3" style={{width:"75rem"}}>
+    <div className="Cart m-2 d-flex justify-content-center align-items-center">
+      <div className="bg-white rounded-3 d-flex flex-wrap m-4 gap-5 border border-success border-3" style={{width:"75rem"}}>
         <div className="m-3 py2">
           <img src={Medicine.imageUrl} alt={Medicine.name} style={{ height: "25rem" }} />
         </div>

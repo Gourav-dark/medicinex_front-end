@@ -12,7 +12,7 @@ import Profile from './Pages/Profile';
 import Orders from './Pages/Orders';
 import Shopping from './Pages/Shopping';
 import BuyItem from './Components/BuyItem';
-
+import Medicines from './Pages/Medicines';
 const App = () => {
   return (
     <div className='App'>
@@ -21,14 +21,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Header />}>
                   <Route index element={ <Home/>}/>
-                  {/* <Route path='service' element={<Service/>}/>
-                  <Route path='about' element={<About/>}/>
-                  <Route path='contact' element={<Contact/>}/> */}
                   <Route path='signup' element={<Register/>}/>
                   <Route path='login' element={<Login/>}/>
                   <Route path='profile' element={<Profile/>}/>
                   <Route path='orders' element={<Orders/>}/>
                   <Route path='shopping' element={<Shopping/>}/>
+                  <Route path='medicines' element={<Medicines/>}/>
                   <Route path='shopping/buyitem/:Mid' element={<BuyItem/>}/>
             </Route>
           </Routes>

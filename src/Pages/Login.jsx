@@ -8,8 +8,8 @@ const Login = () => {
   const Navigate = useNavigate();
   const [show, setshow] = useState(false);
   const [Login, setLogin] = useState({
-    "password": "12345",
-    "email": "rohan@gmail.com",
+    "password": "",
+    "email": "",
   });
   useEffect(() => {
     if (isAuthenticated) {
@@ -41,11 +41,11 @@ const Login = () => {
         <div className="m-5 bg-white p-3 rounded w-50">
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <input type="email" className="form-control" value={Login.email} onChange={handleInput} />
+                <input type="email" className="form-control" name="email" value={Login.email} onChange={handleInput} />
             </div>
             <div className="mb-3">
                 <label className="form-label">Password</label>
-                <input type="password" className="form-control" value={Login.password} onChange={handleInput}/>
+                <input type="password" className="form-control" name="password" value={Login.password} onChange={handleInput}/>
         </div>
         <div className="d-flex justify-content-center">
             <button type="submit" className="btn btn-outline-success btn-lg py-1" onClick={handleSave}>Login</button>

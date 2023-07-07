@@ -7,9 +7,9 @@ const Register = () => {
   const Navigate = useNavigate();
   const [show, setshow] = useState(false);
   const [Registers, setRegister] = useState({
-    "name": "Rohan Sharma",
-    "password": "12345",
-    "email": "rohan@gmail.com",
+    "name": "",
+    "password": "",
+    "email": "",
     "userType": "Customer"
   });
   useEffect(() => {
@@ -18,6 +18,7 @@ const Register = () => {
     }
   }, []);
   const handleInput = (event) => {
+    console.log("skldnvfksdn");
     const { name, value } = event.target;
     setRegister((prev) => {
       return { ...prev, [name]: value };
@@ -29,6 +30,7 @@ const Register = () => {
       const res = Axios.post("https://localhost:7258/api/Users", Registers);
       setshow(true);
       setTimeout(()=>Navigate("/login"),1000);
+      console.log(res);
     } catch (err) { 
       console.log(err);
     }
@@ -52,14 +54,14 @@ const Register = () => {
                     <div className="form-outline mb-4">
 
                       <label className="form-label">Full Name</label>
-                      <input type="text" className="form-control form-control-lg" value={Registers.name} onChange={handleInput} name="firstName" />
+                      <input type="text" className="form-control form-control-lg" value={Registers.name} onChange={handleInput} name="name" />
 
 
                     </div>
                     <div className="form-outline mb-4">
 
                       <label className="form-label">Email Address</label>
-                      <input type="email" className="form-control form-control-lg" value={Registers.email} onChange={handleInput} name="email_id" />
+                      <input type="email" className="form-control form-control-lg" value={Registers.email} onChange={handleInput} name="email" />
                     </div>
                     <div className="form-outline mb-4">
 
